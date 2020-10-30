@@ -32,6 +32,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> getSearchResult(String keyWord, Integer tId) {
         List<Student> studentList = new ArrayList<>();
+        keyWord = keyWord.trim();
         if (isNumeric(keyWord)) {
             studentList = studentDao.selectStudentsByYear(Integer.parseInt(keyWord), tId);
         } else {

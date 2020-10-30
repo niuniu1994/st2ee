@@ -29,6 +29,8 @@ public class TutorController {
 
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, Model model, HttpSession session) {
+        username = username.trim();
+        password = password.trim();
         Tutor tutor = tutorService.login(username, password);
         if (tutor == null){
             model.addAttribute("msg", "Username or password incorrect");

@@ -30,6 +30,7 @@ public class TutorDaoImpl implements TutorDao {
         session = sessionFactory.getCurrentSession();
         String queryString = "from Tutor where username=:username and password=:password";
         Query query = session.createQuery(queryString).setParameter("username", username).setParameter("password", password);
-        return (Tutor) query.getSingleResult();
+        Tutor tutor = (Tutor) query.getSingleResult();
+        return tutor != null ? tutor : null;
     }
 }
