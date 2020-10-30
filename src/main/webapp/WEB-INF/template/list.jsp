@@ -131,9 +131,11 @@
                 </div>
             </div>
         </div>
-        <div class="row ">
+        <div class="row">
             <div class="col-md-1 offset-1">
                 <a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/student" style="margin-right: 10px">Add</a>
+            </div>
+            <div class="col-md-1">
                 <button class="btn btn-success btn-sm" style="margin-right: 10px" data-toggle="modal"
                         data-target="#targetModal">Save changes
                 </button>
