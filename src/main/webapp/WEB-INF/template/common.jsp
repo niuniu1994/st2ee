@@ -4,5 +4,5 @@
         <a href="${pageContext.request.contextPath}/students">
             <img src="${pageContext.request.contextPath}/static/img/myefrei.png" width="130" height="45"></div>
         </a>
-    <button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
+    <a class="btn btn-danger my-2 my-sm-0" href="${pageContext.request.contextPath}/logout">Logout</a>
 </nav>

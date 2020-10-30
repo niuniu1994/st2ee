@@ -40,4 +40,9 @@ public class TutorController {
         session.setAttribute("tutor", tutor);
         return "redirect:students";
     }
+    @GetMapping("/logout")
+    public String logout( HttpSession session){
+        session.setAttribute("tutor", null);
+        return "redirect:login";
+    }
 }
