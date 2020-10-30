@@ -32,9 +32,7 @@ import java.util.Queue;
 public class StudentController {
 
     @Autowired
-
     private StudentService studentService;
-
 
     @GetMapping("/students/{keyWord}")
     public String Search(@PathVariable String keyWord,Model model,HttpSession session){

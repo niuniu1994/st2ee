@@ -53,9 +53,6 @@
         </property>
     </bean>
 
-<!--    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">-->
-<!--        <property name="sessionFactory" ref="sessionFactory"/>-->
-<!--    </bean>-->
 
     <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
@@ -84,6 +81,7 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/ST2EE/login"/>
             <mvc:exclude-mapping path="/login"/>
             <bean class="com.efrei.st2ee.Inteceptor.LoginInterceptor" />
         </mvc:interceptor>

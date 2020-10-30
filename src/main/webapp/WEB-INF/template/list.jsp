@@ -10,7 +10,7 @@
     <title>Main page</title>
     <!-- Bootstrap core CSS -->
     <link>
-    <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .row {
             margin-top: 10px;
@@ -18,7 +18,7 @@
         }
 
         html, body {
-            background: url("../../static/img/background.jpg") no-repeat;
+            background: url("${pageContext.request.contextPath}/static/img/background.jpg") no-repeat;
             background-size: cover;
             height: 100%;
         }
@@ -133,14 +133,14 @@
         </div>
         <div class="row ">
             <div class="col-md-1 offset-1">
-                <a class="btn btn-success btn-sm" href="/student" style="margin-right: 10px">Add</a>
+                <a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/student" style="margin-right: 10px">Add</a>
                 <button class="btn btn-success btn-sm" style="margin-right: 10px" data-toggle="modal"
                         data-target="#targetModal">Save changes
                 </button>
             </div>
         </div>
     </div>
-    <script src="../../static/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
 </main>
 
 <script>
@@ -189,7 +189,7 @@
 
             $('#confirm').click(function () {
                 $.ajax({
-                    url: "/students",
+                    url: "/ST2EE/students",
                     data: JSON.stringify(arr),
                     type: 'put',
                     datatype: 'json',
@@ -211,21 +211,16 @@
             $('#btnSearch').click(function () {
                 let keyWord = $('#keyWord').val();
                 if (keyWord != '') {
-                    // $.ajax({
-                    //     url: "/students/" + keyWord,
-                    //     type: 'get',
-                    //     success:function (data){
-                    //     }
-                    // })
-                    $('#searchGroup').attr('action', "/students/" + keyWord);
+
+                    $('#searchGroup').attr('action', "/ST2EE/students/" + keyWord);
                 }
             })
         }
     )
 </script>
-<script src="../../static/js/jquery.js"></script>
-<script src="../../static/js/bootstrap.min.js"></script>
-<script src="../../static/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
 </body>
 
 </html>

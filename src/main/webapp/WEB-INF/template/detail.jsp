@@ -10,7 +10,7 @@
     <title>Sign in Template for Bootstrap</title>
     <!-- Bootstrap core CSS -->
     <link>
-    <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.min.css" rel="stylesheet">
     <style>
 
         .row {
@@ -24,7 +24,7 @@
         }
 
         html, body {
-            background: url("../../static/img/background.jpg") no-repeat;
+            background: url("${pageContext.request.contextPath}/static/img/background.jpg") no-repeat;
             background-size: cover;
             height: 100%;
         }
@@ -42,7 +42,7 @@
                     <div class="card-title mb-4">
                         <div class="d-flex justify-content-start">
                             <div class="image-container">
-                                <img src="../../static/img/head.png" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail"  alt=""/>
+                                <img src="${pageContext.request.contextPath}/static/img/head.png" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail"  alt=""/>
                             </div>
                             <div class="userData ml-3">
                                 <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">${student.firstName}&nbsp;${student.lastName}</a></h2>
@@ -210,9 +210,9 @@
         </div>
     </div>
 </div>
-<script src="../../static/js/jquery.js"></script>
-<script src="../../static/js/bootstrap.min.js"></script>
-<script src="../../static/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
 </body>
 
 

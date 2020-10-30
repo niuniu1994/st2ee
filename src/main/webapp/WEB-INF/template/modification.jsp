@@ -10,8 +10,8 @@
     <title>Sign in Template for Bootstrap</title>
     <!-- Bootstrap core CSS -->
     <link>
-    <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/dtsel-master/dtsel.css"/>
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/dtsel-master/dtsel.css"/>
     <style>
         .row {
             margin-top: 10px;
@@ -24,7 +24,7 @@
         }
 
         html, body {
-            background: url("../../static/img/background.jpg") no-repeat;
+            background: url("${pageContext.request.contextPath}/static/img/background.jpg") no-repeat;
             background-size: cover;
             height: 100%;
         }
@@ -49,7 +49,7 @@
                     <div class="card-title mb-4">
                         <div class="d-flex justify-content-start">
                             <div class="image-container">
-                                <img src="../../static/img/head.png" id="imgProfile" style="width: 150px; height: 150px"
+                                <img src="${pageContext.request.contextPath}/static/img/head.png" id="imgProfile" style="width: 150px; height: 150px"
                                      class="img-thumbnail"/>
                             </div>
                             <div class="userData ml-3">
@@ -245,10 +245,10 @@
         </div>
     </div>
 </div>
-<script src="../../static/js/jquery.js"></script>
-<script src="../../static/js/bootstrap.min.js"></script>
-<script src="../../static/js/popper.min.js"></script>
-<script src="../../static/dtsel-master/dtsel.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/dtsel-master/dtsel.js"></script>
 <script>
     instance = new dtsel.DTS('input[name="startDate"]', {
         direction: 'BOTTOM'
@@ -285,7 +285,7 @@
                 } else {
                     let res = JSON.stringify(student);
                     $.ajax({
-                        url: "/student",
+                        url: "/ST2EE/student",
                         data: res,
                         async: true,
                         dataType: 'json',
@@ -293,7 +293,7 @@
                         type: method,
                         success: function (data) {
                             if (data.msg === 'success') {
-                                window.location.href = "http://localhost:8080/students";
+                                window.location.href = "http://localhost:8080/ST2EE/students";
                             } else {
                                 $('#alert').attr('style', 'display:block');
                             }

@@ -9,15 +9,15 @@
     <title>Sign in Template for Bootstrap</title>
     <!-- Bootstrap core CSS -->
     <link >
-    <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../../static/css/signin.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/signin.css" rel="stylesheet">
 </head>
 
 <body class="text-center">
-<form class="form-signin" action="/login" method="post">
+<form class="form-signin" action="${pageContext.request.contextPath}/login" method="post">
 
-    <img class="mb-4" src="../../static/img/efrei.svg" alt="" width="144" height="90">
+    <img class="mb-4" src="${pageContext.request.contextPath}/static/img/efrei.svg" alt="" width="144" height="90">
 
     <h1 class="h3 mb-3 font-weight-normal" ></h1>
     <h6 class="h6 mb-3 font-weight-normal"  style="color: #ff0000"></h6>
