@@ -132,14 +132,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-1 offset-1">
+            <div class="col-xl-1 offset-1 custom-control-inline">
                 <a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/student" style="margin-right: 10px">Add</a>
-            </div>
-            <div class="col-md-1">
                 <button class="btn btn-success btn-sm" style="margin-right: 10px" data-toggle="modal"
                         data-target="#targetModal">Save changes
                 </button>
             </div>
+
         </div>
     </div>
     <script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
