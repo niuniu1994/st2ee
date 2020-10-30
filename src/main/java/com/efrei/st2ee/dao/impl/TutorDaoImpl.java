@@ -1,6 +1,7 @@
 package com.efrei.st2ee.dao.impl;
 
 import com.efrei.st2ee.dao.TutorDao;
+import com.efrei.st2ee.entity.Student;
 import com.efrei.st2ee.entity.Tutor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
+import java.util.List;
 
 /**
  * @program: ST2EE
@@ -30,7 +32,7 @@ public class TutorDaoImpl implements TutorDao {
         session = sessionFactory.getCurrentSession();
         String queryString = "from Tutor where username=:username and password=:password";
         Query query = session.createQuery(queryString).setParameter("username", username).setParameter("password", password);
-        Tutor tutor = (Tutor) query.getSingleResult();
-        return tutor != null ? tutor : null;
+        List<Tutor> tutorList = (List<Tutor>) query.getResultList();
+        return tutorList.isEmpty()?null:tutorList.get(0);
     }
 }

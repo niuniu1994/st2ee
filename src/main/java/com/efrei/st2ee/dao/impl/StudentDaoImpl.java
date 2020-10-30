@@ -96,8 +96,8 @@ public class StudentDaoImpl implements StudentDao {
         Query query = session.createQuery(queryString);
         query.setParameter(1, tId);
         query.setParameter(2, studentId);
-        Student student = (Student) query.getSingleResult();
-        return student != null ? student : null;
+        List<Student> studentList = (List<Student>) query.getResultList();
+        return studentList.isEmpty()?null:studentList.get(0);
     }
 
     @Override
