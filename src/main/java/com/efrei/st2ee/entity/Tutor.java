@@ -5,6 +5,7 @@ package com.efrei.st2ee.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.checkerframework.checker.units.qual.C;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -28,11 +29,13 @@ public class Tutor {
     @Column(name = "t_id")
     private Integer tId;
 
-    @Column(name = "t_name")
+    @Column(name = "t_name",nullable = false)
     private String tName;
 
+    @Column(name = "username",nullable = false)
     private String username;
 
+    @Column(name = "password",nullable = false)
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, targetEntity = Student.class ,mappedBy = "tutor")
