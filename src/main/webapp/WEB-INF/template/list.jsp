@@ -99,7 +99,7 @@
                                 <td><input class="attribute" type="checkbox" value="${student.studentId}" name="fait"
                                 <c:if test="${student.fait == true}"> checked </c:if>></td>
                                 <td><a class="btn btn-secondary btn-sm"
-                                       href="${pageContext.request.contextPath}/detail/${student.studentId}">Detail</a>
+                                       href="${pageContext.request.contextPath}/student/${student.studentId}/detail">Detail</a>
                                 </td>
                                 <td><a class="btn btn-warning btn-sm"
                                        href="${pageContext.request.contextPath}/student/${student.studentId}">Edit</a>

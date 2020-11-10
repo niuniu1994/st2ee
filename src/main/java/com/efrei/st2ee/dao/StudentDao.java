@@ -10,28 +10,30 @@ public interface StudentDao {
     /**
      * persisting student instance to database
      *
-     * @Parame: [student]
+     * @Parame: {@link Student}
      **/
     void insertStudent(Student student);
 
     /**
      * update student instance
      *
-     * @Parame: [student]
+     * @Parame: {@link Student}
      **/
     int updateStudent(Student student);
 
     /**
      * update student instance
      *
-     * @Parame: [student]
+     * @Parame: {@link Student}
+     * @return amount of updated rows
      **/
     int updateStudentInternship(StudentInternshipExecution internshipExecution);
 
     /**
      * get all students the tutor occupied from database
      *
-     * @Parame: [student]
+     * @Parame: {@link Student}
+     * @return list of student
      **/
     List<Student> selectAllStudents(Integer tId);
 
@@ -40,6 +42,7 @@ public interface StudentDao {
      *
      * @Parame: sId : id of student
      * @Parame: tid : id of tutor
+     * @return {@link Student}
      **/
     Student selectStudent(Integer sId, Integer tId);
 
@@ -49,6 +52,7 @@ public interface StudentDao {
      *
      * @Parame: keyWord
      * @Parame: tId : id of tutor
+     * @return  list of student
      **/
     List<Student> selectStudentsByKeyWord(String keyWord, Integer tId);
 
@@ -57,22 +61,16 @@ public interface StudentDao {
      *
      * @Parame: year
      * @Parame: tid
+     * @return list of students
      **/
     List<Student> selectStudentsByYear(Integer year, Integer tId);
-
-//    /**
-//     * get a student of tutor from database by id
-//     *
-//     * @Parame: year
-//     * @Parame: tid
-//     **/
-//    List<Student> selectStudentsByGroup(String group, Integer tId);
 
     /**
      * remove student from database
      *
      * @Parame: sId : id of student
      * @Parame: tid : id of tutor
+     * @return amount of deleted row
      **/
     int deleteStudent(Integer sId, Integer tId);
 }

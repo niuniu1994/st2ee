@@ -35,7 +35,7 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping("/students/{keyWord}")
-    public String Search(@PathVariable String keyWord,Model model,HttpSession session){
+    public String search(@PathVariable String keyWord, Model model, HttpSession session){
         Tutor tutor = (Tutor) session.getAttribute("tutor");
         Assert.notNull(tutor, "Authority needed, please login");
         List<Student> studentList = studentService.getSearchResult(keyWord, tutor.getTId());
@@ -65,7 +65,7 @@ public class StudentController {
         return "{'msg':'failure'}";
     }
 
-    @GetMapping("/detail/{sId}")
+    @GetMapping("/student/{sId}/detail")
     public String getStudent(@PathVariable int sId, Model model, HttpSession session) {
         Tutor tutor = (Tutor) session.getAttribute("tutor");
         Assert.notNull(tutor, "Authority needed, please login");
