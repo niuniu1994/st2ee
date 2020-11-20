@@ -5,11 +5,10 @@ import lombok.Getter;
 
 /**
  * @program: ST2EE
- * @description:
+ * @description: login status
  * @author: xin
  * @create: 2020-10-25 12:19
  **/
-
 @Getter
 @AllArgsConstructor
 public enum LoginStateEnum {
@@ -18,11 +17,4 @@ public enum LoginStateEnum {
     private int state;
     private String stateInfo;
 
-    public void setState(int state) {
-        this.state = state;
-    }
-
-    public void setStateInfo(String stateInfo) {
-        this.stateInfo = stateInfo;
-    }
 }

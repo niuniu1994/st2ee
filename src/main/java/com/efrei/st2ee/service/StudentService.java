@@ -14,25 +14,25 @@ public interface StudentService {
     StudentExecution modifyStudentInternship(List<StudentInternshipExecution> internshipExecutionList);
     /**
      * modify student
-     *@Parame: [student]
+     *@param student
     **/
     StudentExecution modifyStudent(Student student);
 
     /**
      * add a student into database
-     *@Parame: [student]
+     *@param student
      **/
     StudentExecution addStudent(Student student);
 
     /**
      * get all students
-     *@Parame: tid tutor id
+     *@param tId
      **/
     List<Student> getAllStudents(Integer tId);
 
     /**
      * get a student from database
-     *@Parame: [student]
+     *@param sId tId
      **/
     Student getStudent(Integer sId,Integer tId);
 

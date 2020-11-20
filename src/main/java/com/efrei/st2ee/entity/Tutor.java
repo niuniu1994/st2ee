@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.checkerframework.checker.units.qual.C;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -22,7 +23,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Setter
 @Getter
-public class Tutor {
+public class Tutor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

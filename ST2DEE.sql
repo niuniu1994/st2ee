@@ -25,7 +25,7 @@ create table student (
                          description varchar(300) comment 'description of mission',
                          comment varchar(300) comment 'comment',
                          cdc boolean not null default false comment 'CdC',
-                         fv boolean not null  default false comment 'fiche visite',
+                         fv boolean not null  default false comment 'fiche visit',
                          fee boolean not null  default false comment 'fiche eval entr',
                          sw boolean not null  default false comment 'sondage web',
                          rr boolean not null  default false comment 'rapport rendu',

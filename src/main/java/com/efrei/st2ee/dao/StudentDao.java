@@ -10,21 +10,21 @@ public interface StudentDao {
     /**
      * persisting student instance to database
      *
-     * @Parame: {@link Student}
+     * @param  {@link Student}
      **/
     void insertStudent(Student student);
 
     /**
      * update student instance
      *
-     * @Parame: {@link Student}
+     * @param  student
      **/
     int updateStudent(Student student);
 
     /**
      * update student instance
      *
-     * @Parame: {@link Student}
+     * @param internshipExecution
      * @return amount of updated rows
      **/
     int updateStudentInternship(StudentInternshipExecution internshipExecution);
@@ -32,7 +32,7 @@ public interface StudentDao {
     /**
      * get all students the tutor occupied from database
      *
-     * @Parame: {@link Student}
+     * @param tId
      * @return list of student
      **/
     List<Student> selectAllStudents(Integer tId);
@@ -40,8 +40,8 @@ public interface StudentDao {
     /**
      * get a student of tutor from database by id
      *
-     * @Parame: sId : id of student
-     * @Parame: tid : id of tutor
+     * @param sId : id of student
+     * @param tId : id of tutor
      * @return {@link Student}
      **/
     Student selectStudent(Integer sId, Integer tId);
@@ -50,8 +50,8 @@ public interface StudentDao {
     /**
      * search student by verify occurrence of keyword in first name or last name
      *
-     * @Parame: keyWord
-     * @Parame: tId : id of tutor
+     * @param keyWord
+     * @param tId : id of tutor
      * @return  list of student
      **/
     List<Student> selectStudentsByKeyWord(String keyWord, Integer tId);
@@ -59,8 +59,8 @@ public interface StudentDao {
     /**
      * get a student of tutor from database by id
      *
-     * @Parame: year
-     * @Parame: tid
+     * @param year
+     * @param tId
      * @return list of students
      **/
     List<Student> selectStudentsByYear(Integer year, Integer tId);
@@ -68,8 +68,8 @@ public interface StudentDao {
     /**
      * remove student from database
      *
-     * @Parame: sId : id of student
-     * @Parame: tid : id of tutor
+     * @param sId : id of student
+     * @param tId : id of tutor
      * @return amount of deleted row
      **/
     int deleteStudent(Integer sId, Integer tId);
