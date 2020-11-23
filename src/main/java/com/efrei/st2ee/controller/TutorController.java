@@ -26,7 +26,6 @@ public class TutorController {
         return "login";
     }
 
-
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, Model model, HttpSession session) {
         username = username.trim();

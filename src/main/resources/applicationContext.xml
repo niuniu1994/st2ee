@@ -88,8 +88,6 @@
     </mvc:interceptors>
 
 
-
-
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/template/"/>
         <property name="suffix" value=".jsp"/>

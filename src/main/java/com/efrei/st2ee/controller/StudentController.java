@@ -1,9 +1,10 @@
 package com.efrei.st2ee.controller;
 
-import com.efrei.st2ee.dto.*;
-import com.efrei.st2ee.enums.*;
+import com.efrei.st2ee.dto.StudentExecution;
+import com.efrei.st2ee.dto.StudentInternshipExecution;
 import com.efrei.st2ee.entity.Student;
 import com.efrei.st2ee.entity.Tutor;
+import com.efrei.st2ee.enums.StudentStateEnum;
 import com.efrei.st2ee.service.StudentService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,14 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
-
-import javax.persistence.Query;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 
 /**
  * @program: ST2EE
@@ -35,7 +32,7 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping("/students/{keyWord}")
-    public String search(@PathVariable String keyWord, Model model, HttpSession session){
+    public String search(@PathVariable String keyWord, Model model, HttpSession session) {
         Tutor tutor = (Tutor) session.getAttribute("tutor");
         Assert.notNull(tutor, "Authority needed, please login");
         List<Student> studentList = studentService.getSearchResult(keyWord, tutor.getTId());
@@ -85,7 +82,7 @@ public class StudentController {
 
     @PostMapping("/student")
     @ResponseBody
-    public String addStudent(@RequestBody Student student,HttpSession session) {
+    public String addStudent(@RequestBody Student student, HttpSession session) {
 
         if (student != null) {
             Tutor tutor = (Tutor) session.getAttribute("tutor");
@@ -93,9 +90,9 @@ public class StudentController {
             student.setTutor(tutor);
 
             StudentExecution studentExecution = studentService.addStudent(student);
-            if (studentExecution.getState() == StudentStateEnum.ADDSUCCESS.getState()){
+            if (studentExecution.getState() == StudentStateEnum.ADDSUCCESS.getState()) {
                 return "{\"msg\":\"success\"}";
-            }else {
+            } else {
                 return "{\"msg\":\"failed\"}";
             }
         }
@@ -105,15 +102,15 @@ public class StudentController {
 
     @PutMapping("/student")
     @ResponseBody
-    public String editStudent(@RequestBody Student student,HttpSession session) {
+    public String editStudent(@RequestBody Student student, HttpSession session) {
 
         if (student != null) {
             Tutor tutor = (Tutor) session.getAttribute("tutor");
             student.setTutor(tutor);
             StudentExecution studentExecution = studentService.modifyStudent(student);
-            if (studentExecution.getState() == StudentStateEnum.MODIFIED.getState()){
+            if (studentExecution.getState() == StudentStateEnum.MODIFIED.getState()) {
                 return "{\"msg\":\"success\"}";
-            }else {
+            } else {
                 return "{\"msg\":\"failed\"}";
             }
         }
@@ -132,7 +129,6 @@ public class StudentController {
         model.addAttribute("msg", "normal");
         return "modification";
     }
-
 
 
 }

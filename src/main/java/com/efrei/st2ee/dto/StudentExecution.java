@@ -1,7 +1,7 @@
 package com.efrei.st2ee.dto;
 
-import com.efrei.st2ee.enums.*;
 import com.efrei.st2ee.entity.Student;
+import com.efrei.st2ee.enums.StudentStateEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,20 +27,20 @@ public class StudentExecution {
     private List<Student> studentList;
 
     public StudentExecution(StudentStateEnum studentStateEnum) {
-        state =studentStateEnum.getState();
+        state = studentStateEnum.getState();
         stateInfo = studentStateEnum.getStateInfo();
     }
 
 
-    public StudentExecution(StudentStateEnum studentStateEnum,Student student) {
-        state =studentStateEnum.getState();
+    public StudentExecution(StudentStateEnum studentStateEnum, Student student) {
+        state = studentStateEnum.getState();
         stateInfo = studentStateEnum.getStateInfo();
         this.student = student;
     }
 
 
-    public StudentExecution(StudentStateEnum studentStateEnum,List<Student> studentList) {
-        state =studentStateEnum.getState();
+    public StudentExecution(StudentStateEnum studentStateEnum, List<Student> studentList) {
+        state = studentStateEnum.getState();
         stateInfo = studentStateEnum.getStateInfo();
         this.studentList = studentList;
     }

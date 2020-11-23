@@ -1,7 +1,6 @@
 package com.efrei.st2ee.dao.impl;
 
 import com.efrei.st2ee.dao.TutorDao;
-import com.efrei.st2ee.entity.Student;
 import com.efrei.st2ee.entity.Tutor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,12 +26,12 @@ public class TutorDaoImpl implements TutorDao {
     private Session session;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class,readOnly = true)
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class, readOnly = true)
     public Tutor selectTutor(String username, String password) {
         session = sessionFactory.getCurrentSession();
         String queryString = "from Tutor where username=:username and password=:password";
         Query query = session.createQuery(queryString).setParameter("username", username).setParameter("password", password);
         List<Tutor> tutorList = (List<Tutor>) query.getResultList();
-        return tutorList.isEmpty()?null:tutorList.get(0);
+        return tutorList.isEmpty() ? null : tutorList.get(0);
     }
 }

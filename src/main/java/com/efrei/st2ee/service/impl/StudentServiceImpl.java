@@ -67,7 +67,7 @@ public class StudentServiceImpl implements StudentService {
             }
 
             try {
-                student1 = FillStudent(student, student1);
+                student1 = fillStudent(student, student1);
                 int res = studentDao.updateStudent(student1);
                 if (res > 0) {
                     return new StudentExecution(StudentStateEnum.MODIFIED);
@@ -119,7 +119,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     //In case the student objet coming from the front are illegle, we will keep attributes non null their old value.
-    private Student FillStudent(Student src, Student output) {
+    private Student fillStudent(Student src, Student output) {
         //Those are attribute that can't be null
         if (src.getAddress() != null) {
             output.setAddress(src.getAddress());

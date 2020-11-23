@@ -28,13 +28,13 @@ public class Student {
     @Column(name = "student_id")
     private Integer studentId;
 
-    @Column(name = "first_name",nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name",nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "student_group",nullable = false)
+    @Column(name = "student_group", nullable = false)
     private String studentGroup;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -44,16 +44,16 @@ public class Student {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "end_date",nullable = false)
+    @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
 
-    @Column(name = "company_name",nullable = false)
+    @Column(name = "company_name", nullable = false)
     private String companyName;
 
-    @Column(name = "charger",nullable = false)
+    @Column(name = "charger", nullable = false)
     private String charger;
 
-    @Column(name = "address",nullable = false)
+    @Column(name = "address", nullable = false)
     private String address;
 
     @Column(name = "note_tech")

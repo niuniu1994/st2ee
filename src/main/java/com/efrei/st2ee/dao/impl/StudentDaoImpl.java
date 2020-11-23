@@ -1,6 +1,7 @@
 package com.efrei.st2ee.dao.impl;
-import com.efrei.st2ee.dto.*;
+
 import com.efrei.st2ee.dao.StudentDao;
+import com.efrei.st2ee.dto.StudentInternshipExecution;
 import com.efrei.st2ee.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,8 +20,10 @@ import java.util.List;
  * @create: 2020-10-24 21:57
  **/
 
+
 @Repository("studentDao")
 public class StudentDaoImpl implements StudentDao {
+
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -63,11 +66,11 @@ public class StudentDaoImpl implements StudentDao {
         session = sessionFactory.getCurrentSession();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("update Student set ");
-        for (int i = 0; i < internshipExecution.getCheckedList().size(); i++){
+        for (int i = 0; i < internshipExecution.getCheckedList().size(); i++) {
             stringBuilder.append(internshipExecution.getNameList().get(i));
             stringBuilder.append("=");
             stringBuilder.append(internshipExecution.getCheckedList().get(i));
-            if (i != internshipExecution.getCheckedList().size()-1){
+            if (i != internshipExecution.getCheckedList().size() - 1) {
                 stringBuilder.append(",");
             }
         }
@@ -97,7 +100,7 @@ public class StudentDaoImpl implements StudentDao {
         query.setParameter(1, tId);
         query.setParameter(2, studentId);
         List<Student> studentList = (List<Student>) query.getResultList();
-        return studentList.isEmpty()?null:studentList.get(0);
+        return studentList.isEmpty() ? null : studentList.get(0);
     }
 
     @Override

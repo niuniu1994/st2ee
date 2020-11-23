@@ -1,11 +1,9 @@
 package com.efrei.st2ee.entity;
 
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.checkerframework.checker.units.qual.C;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -30,16 +28,16 @@ public class Tutor implements Serializable {
     @Column(name = "t_id")
     private Integer tId;
 
-    @Column(name = "t_name",nullable = false)
+    @Column(name = "t_name", nullable = false)
     private String tName;
 
-    @Column(name = "username",nullable = false)
+    @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "password",nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Student.class ,mappedBy = "tutor")
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = Student.class, mappedBy = "tutor")
     private Set<Student> studentSet;
 
     @Override
@@ -47,7 +45,7 @@ public class Tutor implements Serializable {
         return "Tutor{" +
                 "tId=" + tId +
                 ", tName='" + tName + '\'' +
-                ", password='" + password + '\''+
+                ", password='" + password + '\'' +
                 '}';
     }
 }
