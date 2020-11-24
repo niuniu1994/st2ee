@@ -145,8 +145,20 @@
 </main>
 
 <script>
+    function getContextPath() {
+        let contextPath = document.location.pathname;
+        let index = contextPath.substr(1).indexOf("/");
+        contextPath = contextPath.substr(0,index+1);
+        console.log(contextPath);
+        return contextPath;
+    }
     $(
         function () {
+            let contextPath = getContextPath();
+            let path = "/students";
+            if (!contextPath === ""){
+                path = contextPath + path;
+            }
             let arr = new Array();
             $('.alert').hide();
             $('.attribute').click(function () {
@@ -190,7 +202,7 @@
 
             $('#confirm').click(function () {
                 $.ajax({
-                    url: "/ST2EE/students",
+                    url: path,
                     data: JSON.stringify(arr),
                     type: 'put',
                     datatype: 'json',
@@ -211,9 +223,8 @@
 
             $('#btnSearch').click(function () {
                 let keyWord = $('#keyWord').val();
-                if (keyWord != '') {
-
-                    $('#searchGroup').attr('action', "/ST2EE/students/" + keyWord);
+                if (keyWord !== '') {
+                    $('#searchGroup').attr('action', path +'/'+ keyWord);
                 }
             })
         }

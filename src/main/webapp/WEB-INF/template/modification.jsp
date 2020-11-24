@@ -77,7 +77,7 @@
                                          aria-labelledby="basicInfo-tab">
 
                                         <%--                                        <input type="hidden" name="_method" value="put"/>--%>
-
+                                        <input hidden id="contextPaht" value="">
                                         <input hidden id="studentId" name="studentId" class="form-control" type="text"
                                                value="${student.studentId}">
 
@@ -258,8 +258,21 @@
         direction: 'BOTTOM'
     })
 
+    function getContextPath() {
+        let contextPath = document.location.pathname;
+        let index = contextPath.substr(1).indexOf("/");
+        contextPath = contextPath.substr(0,index+1);
+        return contextPath;
+    }
+
     $(
         function () {
+            let contextPath = getContextPath();
+            let path = "/student";
+            if (!contextPath === "/student"){
+                path = contextPath + path;
+            }
+            console.log(path);
             let id = $('#studentId').val();
             let method = (id === '') ? 'post' : 'put';
             $("#btnSub").click(function () {
@@ -285,7 +298,7 @@
                 } else {
                     let res = JSON.stringify(student);
                     $.ajax({
-                        url: "/ST2EE/student",
+                        url: path,
                         data: res,
                         async: true,
                         dataType: 'json',
@@ -293,7 +306,7 @@
                         type: method,
                         success: function (data) {
                             if (data.msg === 'success') {
-                                window.location.href = "http://localhost:8080/ST2EE/students";
+                                window.location.href = path+'s';
                             } else {
                                 $('#alert').attr('style', 'display:block');
                             }
