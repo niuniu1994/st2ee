@@ -48,10 +48,10 @@ public class StudentServiceImpl implements StudentService {
     public StudentExecution modifyStudentInternship(List<StudentInternshipExecution> internshipExecutionList) throws RuntimeException {
         try {
             internshipExecutionList.forEach(studentDao::updateStudentInternship);
+            return new StudentExecution(StudentStateEnum.MODIFIED);
         } catch (Exception e) {
             throw new RuntimeException();
         }
-        return new StudentExecution(StudentStateEnum.MODIFIED);
     }
 
     @Override

@@ -34,10 +34,6 @@
             <a href="#" class="close" data-dismiss="alert">&times;</a>
             <strong>Success! </strong>Changes have been saved.
         </div>
-        <div id="myAlert2" class="alert alert-danger alert-dismissable" style="display: none">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
-            <strong>Error! </strong>Save changes failed.
-        </div>
         <div id="myAlert3" class="alert alert-warning alert-dismissable" style="display: none">
             <a href="#" class="close" data-dismiss="alert">&times;</a>
             <strong>Error! </strong>Save changes failed.
@@ -159,7 +155,7 @@
             if (!contextPath === ""){
                 path = contextPath + path;
             }
-            let arr = new Array();
+            let arr = [];
             $('.alert').hide();
             $('.attribute').click(function () {
                 let flag = false;
@@ -210,10 +206,7 @@
                     success: function (data) {
                         data = JSON.parse(data);
                         if (data.msg === 'success') {
-                            $('#myAlert1').attr('style', 'display:block');
-                        } else {
-                            $('#myAlert2').attr('style', 'display:block');
-                        }
+                            $('#myAlert1').attr('style', 'display:block');}
                     },
                     fail: function () {
                         $('#myAlert3').attr('style', 'display:block');

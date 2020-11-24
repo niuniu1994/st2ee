@@ -56,10 +56,7 @@ public class StudentController {
         ObjectMapper objectMapper = new ObjectMapper();
         Map<String, String> map = new HashMap<>();
         map.put("msg", "success");
-        if (studentExecution.getState() == StudentStateEnum.MODIFIED.getState()) {
-            return objectMapper.writeValueAsString(map);
-        }
-        return "{'msg':'failure'}";
+        return objectMapper.writeValueAsString(map);
     }
 
     @GetMapping("/student/{sId}/detail")
