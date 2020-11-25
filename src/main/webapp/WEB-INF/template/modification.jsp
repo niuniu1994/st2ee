@@ -44,6 +44,10 @@
                 <a href="#" class="close" data-dismiss="alert">&times;</a>
                 <strong>Attention! </strong>Element end with <span style="color: red">*</span> can't be empty!
             </div>
+            <div id="alert2" class="alert alert-warning alert-warning" style="display: none">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong>Attention! </strong>Format of note is not correct!
+            </div>
             <div class="card">
                 <div class="card-body">
                     <div class="card-title mb-4">
@@ -292,10 +296,12 @@
                 student.noteCom = $('#noteCom').val();
                 student.noteTech = $('#noteTech').val();
 
-                if (student.firstName == '' || student.lastName == '' || student.address == '' || student.companyName == ''
-                    || student.charger == '' || student.startDate == '' || student.endDate == '' || student.studentGroup == '') {
+                if (student.firstName === '' || student.lastName === '' || student.address === '' || student.companyName === ''
+                    || student.charger === '' || student.startDate === '' || student.endDate === '' || student.studentGroup === '') {
                     $("#alert1").attr('style', 'display:block');
-                } else {
+                } else if( (student.noteTech !== '' && isNaN(student.noteTech)) || (student.noteCom !== '' && isNaN(student.noteComh))){
+                    $('#alert2').attr('style','display:block');
+                }else {
                     let res = JSON.stringify(student);
                     $.ajax({
                         url: path,
