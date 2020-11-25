@@ -22,7 +22,6 @@
             background-size: cover;
             height: 100%;
         }
-
     </style>
 </head>
 
@@ -56,7 +55,7 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
                         <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>Gr</th>
                             <th>FIRST NAME</th>
                             <th>LAST NAME</th>
@@ -72,7 +71,7 @@
                             <th>Edit</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                         <c:forEach items="${studentList}" var="student">
                             <tr class="intern">
                                 <td>${student.studentGroup}</td>
