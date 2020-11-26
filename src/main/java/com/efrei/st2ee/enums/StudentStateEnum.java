@@ -18,5 +18,4 @@ public enum StudentStateEnum {
 
     private int state;
     private String stateInfo;
-
 }

@@ -12,14 +12,14 @@ public interface StudentDao {
      *
      * @param  {@link Student}
      **/
-    boolean insertStudent(Student student);
+    int insertStudent(Student student);
 
     /**
      * update student instance
      *
      * @param  student
      **/
-    boolean updateStudent(Student student);
+    int updateStudent(Student student);
 
     /**
      * update student instance
@@ -27,7 +27,7 @@ public interface StudentDao {
      * @param internshipExecution
      * @return amount of updated rows
      **/
-    boolean updateStudentInternship(StudentInternshipExecution internshipExecution);
+    int updateStudentInternship(StudentInternshipExecution internshipExecution);
 
     /**
      * get all students the tutor occupied from database
@@ -72,5 +72,5 @@ public interface StudentDao {
      * @param tId : id of tutor
      * @return amount of deleted row
      **/
-    boolean deleteStudent(Integer sId, Integer tId);
+    int deleteStudent(Integer sId, Integer tId);
 }

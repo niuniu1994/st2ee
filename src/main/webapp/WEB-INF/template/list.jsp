@@ -100,10 +100,10 @@
                                        href="${pageContext.request.contextPath}/student/${student.studentId}">Edit</a>
                                 </td>
                                 <td>
-                                    <a class="btnDelete btn btn-danger btn-sm"
-                                            data-toggle="modal"
-                                            data-target="#targetModal1"
-                                            id="${student.studentId}"
+                                    <a class="btnDelete btn btn-danger btn-sm text-white"
+                                       data-toggle="modal"
+                                       data-target="#targetModal1"
+                                       id="${student.studentId}"
                                     >Delete
                                     </a>
                                 </td>
@@ -266,9 +266,9 @@
                     datatype: 'json',
                     success: function (data) {
                         data = JSON.parse(data);
-                        if (data.msg === 'success'){
+                        if (data.msg === 'success') {
                             window.location.href = path;
-                        }else {
+                        } else {
                             $('#myAlert3').attr('style', 'display:block');
                         }
                     }

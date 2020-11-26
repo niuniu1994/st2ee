@@ -14,10 +14,9 @@ import java.util.List;
  * @author: xin
  * @create: 2020-10-25 12:14
  **/
-
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 public class StudentExecution {
     private int state;
     private String stateInfo;

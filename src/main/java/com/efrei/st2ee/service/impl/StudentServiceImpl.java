@@ -70,7 +70,7 @@ public class StudentServiceImpl implements StudentService {
 
             try {
                 student1 = fillStudent(student, student1);
-                if (studentDao.updateStudent(student1)) {
+                if (studentDao.updateStudent(student1) > 0) {
                     return new StudentExecution(StudentStateEnum.MODIFIED);
                 } else {
                     return new StudentExecution(StudentStateEnum.FAILMODIFIED);
@@ -89,7 +89,8 @@ public class StudentServiceImpl implements StudentService {
     public StudentExecution addStudent(Student student) throws RuntimeException {
         if (student != null && student.getTutor() != null && student.getTutor().getTId() != null) {
             try {
-                if (studentDao.insertStudent(student)) {
+                int res = studentDao.insertStudent(student);
+                if (res > 0) {
                     return new StudentExecution(StudentStateEnum.ADDSUCCESS);
                 } else {
                     return new StudentExecution(StudentStateEnum.ADDFAILED);
@@ -117,8 +118,8 @@ public class StudentServiceImpl implements StudentService {
     public StudentExecution deleteStudent(Integer sId, Integer tId) {
 
         try {
-            int res = studentDao.deleteStudent(tId,sId);
-            if (res == 1) {
+            int res = studentDao.deleteStudent(tId, sId);
+            if (res > 0) {
                 return new StudentExecution(StudentStateEnum.MODIFIED);
             } else {
                 return new StudentExecution(StudentStateEnum.FAILMODIFIED);

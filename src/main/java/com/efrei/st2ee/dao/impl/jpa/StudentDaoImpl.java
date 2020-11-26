@@ -29,15 +29,15 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
-    public boolean insertStudent(Student student) {
+    public int insertStudent(Student student) {
         session = sessionFactory.getCurrentSession();
         session.save(student);
-        return true;
+        return 1;
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
-    public boolean updateStudent(Student student) throws RuntimeException {
+    public int updateStudent(Student student) throws RuntimeException {
         session = sessionFactory.getCurrentSession();
         String queryString = "update Student set firstName=:firstName, lastName=:lastName, startDate=:startDate,endDate=:endDate,companyName=:companyName,charger=:charger,address=:address,noteCom=:noteCom,noteTech=:noteTech,studentGroup=:studentGroup,description=:description,comment=:comment where studentId=:studentId and tutor.tId=:tId";
         Query query = session.createQuery(queryString);
@@ -55,13 +55,12 @@ public class StudentDaoImpl implements StudentDao {
         query.setParameter("comment", student.getComment());
         query.setParameter("studentId", student.getStudentId());
         query.setParameter("tId", student.getTutor().getTId());
-        query.executeUpdate();
-        return true;
+        return  query.executeUpdate();
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
-    public boolean updateStudentInternship(StudentInternshipExecution internshipExecution) {
+    public int updateStudentInternship(StudentInternshipExecution internshipExecution) {
         session = sessionFactory.getCurrentSession();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("update Student set ");
@@ -77,8 +76,7 @@ public class StudentDaoImpl implements StudentDao {
         stringBuilder.append(internshipExecution.getStudentId());
         String queryString = stringBuilder.toString();
         Query query = session.createQuery(queryString);
-        query.executeUpdate();
-        return true;
+        return  query.executeUpdate();
     }
 
     @Override
@@ -136,12 +134,11 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public boolean deleteStudent(Integer studentId, Integer tId) {
+    public int deleteStudent(Integer studentId, Integer tId) {
         session = sessionFactory.getCurrentSession();
         String queryString = "delete from Student where tutor.tId=?1 and studentId=?2";
         Query query = session.createQuery(queryString).setParameter(1, tId).setParameter(2, studentId);
-        query.executeUpdate();
-        return true;
+        return query.executeUpdate();
     }
 
 
