@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import lombok.Data;
 
 /**
  * @program: ST2EE
@@ -18,9 +19,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "student")
-@NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class Student {
 
     @Id
@@ -76,6 +75,7 @@ public class Student {
     private boolean sout;
     private boolean plan;
     private boolean fait;
+    
 
     @ManyToOne(targetEntity = Tutor.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "t_id")

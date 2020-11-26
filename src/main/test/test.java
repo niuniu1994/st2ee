@@ -1,3 +1,4 @@
+
 import com.efrei.st2ee.entity.Student;
 import com.efrei.st2ee.entity.Tutor;
 import org.hibernate.Session;
@@ -22,7 +23,8 @@ import java.util.Set;
  * @description:
  * @author: xin
  * @create: 2020-10-24 17:37
- **/
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
 public class test {
@@ -33,7 +35,7 @@ public class test {
     Session session;
 
     @Before
-    public void init(){
+    public void init() {
         session = sessionFactory.openSession();
     }
 
@@ -58,23 +60,21 @@ public class test {
 
         session.save(tutor);
 
-
         session.beginTransaction().commit();
         session.close();
     }
 
     @Test
-    public void testSerche(){
+    public void testSerche() {
 
         String queryString = "from Student as student where YEAR(startDate)=:startDate";
 
-        Query query =  session.createQuery(queryString);
-        query.setParameter("startDate",2020);
+        Query query = session.createQuery(queryString);
+        query.setParameter("startDate", 2020);
         List list = query.getResultList();
 
         session.close();
         list.forEach(System.out::println);
     }
-
 
 }

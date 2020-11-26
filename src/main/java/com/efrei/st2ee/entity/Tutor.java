@@ -1,6 +1,8 @@
 package com.efrei.st2ee.entity;
 
 
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,9 +20,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tutor")
-@NoArgsConstructor
-@Setter
-@Getter
+@Data
 public class Tutor implements Serializable {
 
     @Id

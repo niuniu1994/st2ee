@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+import javax.annotation.Resource;
 
 /**
  * @program: ST2EE
@@ -25,7 +26,8 @@ import java.util.regex.Pattern;
 @Service("studentService")
 public class StudentServiceImpl implements StudentService {
 
-    @Autowired
+    //@Resource(name="studentDao")
+    @Resource(name = "jdbcStudentDao")
     private StudentDao studentDao;
 
 
@@ -40,7 +42,6 @@ public class StudentServiceImpl implements StudentService {
         }
         return studentList;
     }
-
 
 
     @Override
@@ -68,8 +69,7 @@ public class StudentServiceImpl implements StudentService {
 
             try {
                 student1 = fillStudent(student, student1);
-                int res = studentDao.updateStudent(student1);
-                if (res > 0) {
+                if (studentDao.updateStudent(student1)) {
                     return new StudentExecution(StudentStateEnum.MODIFIED);
                 } else {
                     return new StudentExecution(StudentStateEnum.FAILMODIFIED);
@@ -88,9 +88,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentExecution addStudent(Student student) throws RuntimeException {
         if (student != null && student.getTutor() != null && student.getTutor().getTId() != null) {
             try {
-
-                studentDao.insertStudent(student);
-                if (student.getStudentId() != null) {
+                if (studentDao.insertStudent(student)) {
                     return new StudentExecution(StudentStateEnum.ADDSUCCESS);
                 } else {
                     return new StudentExecution(StudentStateEnum.ADDFAILED);

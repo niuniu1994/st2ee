@@ -3,6 +3,9 @@ package com.efrei.st2ee.service.impl;
 import com.efrei.st2ee.dao.TutorDao;
 import com.efrei.st2ee.entity.Tutor;
 import com.efrei.st2ee.service.TutorService;
+
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +17,9 @@ import org.springframework.stereotype.Service;
  **/
 @Service("tutorService")
 public class TutorServiceImpl implements TutorService {
-    @Autowired
+
+    //@Resource(name = "tutorDao")
+    @Resource(name = "jdbcTutorDao")
     TutorDao tutorDao;
 
     @Override

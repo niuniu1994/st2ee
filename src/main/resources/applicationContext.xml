@@ -15,10 +15,14 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-<context:property-placeholder location="classpath:database.properties"/>
+    <!-- Define the location of the database properties file -->
+    <context:property-placeholder location="classpath:database.properties"/>
+    <!-- Define the base package of the application -->
     <context:component-scan base-package="com.efrei"/>
+    <!-- Enable aspect-oriented programming with aspectj-->
     <aop:aspectj-autoproxy/>
 
+    <!-- Define the datasource properties with the properties file -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${database.driverClass}"/>
         <property name="url" value="${database.url}"/>
@@ -26,42 +30,57 @@
         <property name="password" value="${database.password}"/>
     </bean>
 
+    <!-- Define the sessionFactory -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!-- Include the dataSource -->
         <property name="dataSource" ref="dataSource"/>
+        <!-- Define the package handling the entities -->
         <property name="packagesToScan" value="com.efrei.st2ee.entity"/>
 
+        <!-- Configure Hibernates -->
         <property name="hibernateProperties">
             <props>
-<!--                <prop key="hibernate.current_session_context_class">thread</prop>-->
+                <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
+                <!-- Define the connection provider -->
                 <prop key="connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</prop>
-                <!--                sql dialect-->
+                <!-- Define the sql dialect -->
                 <prop key="hibernate.dialect">
                     org.hibernate.dialect.MySQL8Dialect
                 </prop>
 
-                <!--                <prop key="hibernate.hbm2ddl.auto">none</prop>-->
+                <!--<prop key="hibernate.hbm2ddl.auto">none</prop>-->
+                <!-- Show the sql request in the console -->
                 <prop key="hibernate.show_sql">true</prop>
+                <!-- Format the show of the sql request -->
                 <prop key="hibernate.format_sql">true</prop>
+                <!-- Show the hint of sql request in the console -->
                 <prop key="hibernate.use_sql_comments">true</prop>
-                <!--                c3p0  -->
+
+                <!-- c3p0  -->
+                <!-- Specifies how many connections it should try to acquire if the pool runs out of available connections -->
                 <prop key="c3p0.acquire_increment">20</prop>
+                <!-- Let the pool periodically check a connection for it's validity to avoid connection closed issue-->
                 <prop key="c3p0.idle_test_period">3</prop>
+                <!-- Specifies the maximum number of connections it can maintain at any given time -->
                 <prop key="c3p0.max_size">20</prop>
+                <!-- Specifies the minimum number of connections it should maintain at any given time -->
                 <prop key="c3p0.min_size">3</prop>
+                <!-- Number of prepared statements will be cached. Increase performance. -->
                 <prop key="c3p0.max_statements">10</prop>
             </props>
         </property>
     </bean>
 
-
+    <!-- Define the session factory as the Spring transaction manager  -->
     <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     <!-- enable transaction annotation support -->
-    <tx:annotation-driven transaction-manager="txManager" />
+    <tx:annotation-driven transaction-manager="txManager"/>
 
-
+    <!-- Define dependency injection -->
     <mvc:annotation-driven>
+        <!-- Define a converter injection for html and json messages -->
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                 <property name="supportedMediaTypes">
@@ -74,24 +93,28 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <!-- Using this handler spring dispatcher will forward all requests to the default Servlet -->
     <mvc:default-servlet-handler/>
+    <!-- Serve all requests for resources coming in with a public URL pattern like “/resources/**” by searching in the “classpath:/resources/” directory under the root folder in our application. -->
     <mvc:resources mapping="/resources/**" location="classpath:/resources/"/>
 
-
+    <!-- Define interceptors -->
     <mvc:interceptors>
+        <!-- Bind an interceptor for restrict user access -->
         <mvc:interceptor>
+            <!-- Mapping all the paths from root path -->
             <mvc:mapping path="/**"/>
+            <!-- Exclude the login page -->
             <mvc:exclude-mapping path="/ST2EE/login"/>
             <mvc:exclude-mapping path="/login"/>
-            <bean class="com.efrei.st2ee.Inteceptor.LoginInterceptor" />
+            <!-- Define the bean telated to this interceptor -->
+            <bean class="com.efrei.st2ee.Inteceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
-
+    <!-- Define the view (jsp files) folder -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/template/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
-
 </beans>

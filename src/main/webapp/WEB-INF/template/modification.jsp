@@ -49,7 +49,8 @@
                     <div class="card-title mb-4">
                         <div class="d-flex justify-content-start">
                             <div class="image-container">
-                                <img src="${pageContext.request.contextPath}/static/img/head.png" id="imgProfile" style="width: 150px; height: 150px"
+                                <img src="${pageContext.request.contextPath}/static/img/head.png" id="imgProfile"
+                                     style="width: 150px; height: 150px"
                                      class="img-thumbnail"/>
                             </div>
                             <div class="userData ml-3">
@@ -126,7 +127,8 @@
                                                 <label style="font-weight:bold;">Note Com</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                <input id="noteCom" name="noteCom" class="form-control" type="text"
+                                                <input id="noteCom" name="noteCom" class="form-control" type="number"
+                                                       max="20" min="0"
                                                        required="" value="${student.noteCom}">
                                             </div>
                                         </div>
@@ -136,7 +138,8 @@
                                                 <label style="font-weight:bold;">Note Tech</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                <input id="noteTech" name="noteTech" class="form-control" type="text"
+                                                <input id="noteTech" name="noteTech" class="form-control" type="number"
+                                                       max="20" min="0"
                                                        required="" value="${student.noteTech}">
                                             </div>
                                         </div>
@@ -208,8 +211,9 @@
                                                     style="color: red">*</span>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                <input id="startDate" name="startDate" readonly="true"
-                                                       class="form-control" required="" value="${student.startDate}"/>
+                                                <input id="startDate" name="startDate"
+                                                       class="form-control" required="" readonly="true"
+                                                       value="${student.startDate}"/>
                                             </div>
                                         </div>
                                         <hr/>

@@ -1,4 +1,4 @@
-package com.efrei.st2ee.dao.impl;
+package com.efrei.st2ee.dao.impl.jpa;
 
 import com.efrei.st2ee.dao.TutorDao;
 import com.efrei.st2ee.entity.Tutor;
@@ -17,9 +17,12 @@ import java.util.List;
  * @description:
  * @author: xin
  * @create: 2020-10-29 17:44
- **/
-@Repository("tutorDao")
+ *
+ */
+
+//@Repository("tutorDao")
 public class TutorDaoImpl implements TutorDao {
+
     @Autowired
     private SessionFactory sessionFactory;
 
