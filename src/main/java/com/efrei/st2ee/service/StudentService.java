@@ -36,5 +36,8 @@ public interface StudentService {
      **/
     Student getStudent(Integer sId,Integer tId);
 
+    StudentExecution deleteStudent(Integer sId, Integer tId);
+
+
     List<String> getGroupInfo();
 }

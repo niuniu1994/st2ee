@@ -127,5 +127,17 @@ public class StudentController {
         return "modification";
     }
 
+    @DeleteMapping("/student/{sId}")
+    @ResponseBody
+    public String deleteStudent(@PathVariable int sId,HttpSession session) throws JsonProcessingException {
+        Tutor tutor = (Tutor) session.getAttribute("tutor");
+        StudentExecution studentExecution = studentService.deleteStudent(tutor.getTId(), sId);
+        if (studentExecution.getState()==StudentStateEnum.MODIFIED.getState()){
+            return "{\"msg\":\"success\"}";
+        }else {
+            return "{\"msg\":\"failed\"}";
+        }
+    }
+
 
 }

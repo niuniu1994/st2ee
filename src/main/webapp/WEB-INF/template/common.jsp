@@ -9,6 +9,7 @@ justify-content: space-between;">
 
 
     <div id= class="text-capitalize" style="display: flex; flex-direction: row;">
+
         <h4 class="mr-lg-4 text-capitalize text-light mt-1">${tutor.username}</h4>
         <a class="btn btn-danger my-2 my-sm-0" href="${pageContext.request.contextPath}/logout">Logout</a>
     </div>

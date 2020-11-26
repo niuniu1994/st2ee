@@ -37,20 +37,19 @@
             <a href="#" class="close" data-dismiss="alert">&times;</a>
             <strong>Error! </strong>Save changes failed.
         </div>
-        <div class="row">
 
-            <div class="col offset-md-9">
+        <div class="row">
+            <div class="col offset-lg-9">
                 <form id="searchGroup" class="form-inline" method="get" action="#">
                     <input id="keyWord" class="form-control mr-sm-2 b-1" type="search" placeholder="Search"
                            aria-label="Search" value="">
                     <button id="btnSearch" class=" btn btn-sm btn-success " type="submit">Search</button>
                 </form>
             </div>
-
-
         </div>
 
         <div class="row">
+
             <div class="col-md-10 offset-md-1" style="background-color: whitesmoke; border: solid 2px #007bff ">
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
@@ -69,6 +68,7 @@
                             <th>FAITE</th>
                             <th>Detail</th>
                             <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody class="text-center">
@@ -99,6 +99,14 @@
                                 <td><a class="btn btn-warning btn-sm"
                                        href="${pageContext.request.contextPath}/student/${student.studentId}">Edit</a>
                                 </td>
+                                <td>
+                                    <a class="btnDelete btn btn-danger btn-sm"
+                                            data-toggle="modal"
+                                            data-target="#targetModal1"
+                                            id="${student.studentId}"
+                                    >Delete
+                                    </a>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -126,14 +134,35 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="targetModal1" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="targetModalLabel1"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure about deleting the student ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="confirmDelete" type="button" class="btn btn-primary" data-dismiss="modal">Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xl-1 offset-1 custom-control-inline">
-                <a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/student" style="margin-right: 10px">Add</a>
+                <a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/student"
+                   style="margin-right: 10px">Add</a>
                 <button class="btn btn-success btn-sm" style="margin-right: 10px" data-toggle="modal"
                         data-target="#targetModal">Save changes
                 </button>
             </div>
-
         </div>
     </div>
     <script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
@@ -143,15 +172,16 @@
     function getContextPath() {
         let contextPath = document.location.pathname;
         let index = contextPath.substr(1).indexOf("/");
-        contextPath = contextPath.substr(0,index+1);
+        contextPath = contextPath.substr(0, index + 1);
         console.log(contextPath);
         return contextPath;
     }
+
     $(
         function () {
             let contextPath = getContextPath();
             let path = "/students";
-            if (!contextPath === ""){
+            if (!contextPath === "") {
                 path = contextPath + path;
             }
             let arr = [];
@@ -205,7 +235,8 @@
                     success: function (data) {
                         data = JSON.parse(data);
                         if (data.msg === 'success') {
-                            $('#myAlert1').attr('style', 'display:block');}
+                            $('#myAlert1').attr('style', 'display:block');
+                        }
                     },
                     fail: function () {
                         $('#myAlert3').attr('style', 'display:block');
@@ -216,8 +247,32 @@
             $('#btnSearch').click(function () {
                 let keyWord = $('#keyWord').val();
                 if (keyWord !== '') {
-                    $('#searchGroup').attr('action', path +'/'+ keyWord);
+                    $('#searchGroup').attr('action', path + '/' + keyWord);
                 }
+            })
+
+            let deleteStudentId;
+            $('.btnDelete').click(function (event) {
+                deleteStudentId = event.target.id;
+                console.log(deleteStudentId);
+            })
+
+            $('#confirmDelete').click(function () {
+                let deletePath = contextPath + '/student/' + deleteStudentId;
+                $.ajax({
+                    url: deletePath,
+                    type: 'delete',
+                    contentType: 'application/json',
+                    datatype: 'json',
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        if (data.msg === 'success'){
+                            window.location.href = path;
+                        }else {
+                            $('#myAlert3').attr('style', 'display:block');
+                        }
+                    }
+                })
             })
         }
     )

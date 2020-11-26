@@ -1,10 +1,11 @@
 package com.efrei.st2ee.service.impl;
 
 import com.efrei.st2ee.dao.StudentDao;
-import com.efrei.st2ee.dto.*;
+import com.efrei.st2ee.dto.StudentExecution;
+import com.efrei.st2ee.dto.StudentInternshipExecution;
 import com.efrei.st2ee.entity.Student;
-import com.efrei.st2ee.enums.*;
-
+import com.efrei.st2ee.enums.GroupStateEnum;
+import com.efrei.st2ee.enums.StudentStateEnum;
 import com.efrei.st2ee.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -112,6 +113,22 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public StudentExecution deleteStudent(Integer sId, Integer tId) {
+
+        try {
+            int res = studentDao.deleteStudent(tId,sId);
+            if (res == 1) {
+                return new StudentExecution(StudentStateEnum.MODIFIED);
+            } else {
+                return new StudentExecution(StudentStateEnum.FAILMODIFIED);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
+    }
+
+    @Override
     public List<String> getGroupInfo() {
         return GroupStateEnum.getAllGroup();
     }
@@ -151,6 +168,7 @@ public class StudentServiceImpl implements StudentService {
 
         return output;
     }
+
 
     private static boolean isNumeric(String str) {
         Pattern pattern = Pattern.compile("[0-9]*");
