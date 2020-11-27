@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Sign in Template for Bootstrap</title>
+    <title>${student.firstName}&nbsp;${student.lastName}</title>
     <!-- Bootstrap core CSS -->
     <link>
     <link href="${pageContext.request.contextPath}/static/css/bootstrap.min.css" rel="stylesheet">
