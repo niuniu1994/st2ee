@@ -65,7 +65,7 @@ public class StudentDaoTest {
     public void getAllTest() {
         List<Student> list = studentDao.selectAllStudents(1);
         list.forEach(student -> System.out.println(student.getTutor().getTId()));
-        Assert.assertEquals(list.size(), 4);
+        Assert.assertEquals(list.size(), 3);
     }
 
     @Test
@@ -76,16 +76,16 @@ public class StudentDaoTest {
 
     @Test
     public void getStudentByKeyWordTest() {
-        List<Student> students = studentDao.selectStudentsByKeyWord("l3", 1);
+        List<Student> students = studentDao.selectStudentsByKeyWord("M1", 1);
         students.forEach(System.out::println);
-        Assert.assertEquals(students.size(), 2);
+        Assert.assertEquals(students.size(), 1);
     }
 
     @Test
     public void getStudentsByYearTest() {
         List<Student> students = studentDao.selectStudentsByYear(2020, 1);
         students.forEach(System.out::println);
-        Assert.assertEquals(students.size(), 4);
+        Assert.assertEquals(students.size(), 3);
     }
 
     @Test
