@@ -181,7 +181,7 @@
         function () {
             let contextPath = getContextPath();
             let path = "/students";
-            if (!contextPath === "") {
+            if (contextPath !== "") {
                 path = contextPath + path;
             }
             let arr = [];
