@@ -20,18 +20,13 @@
 
         <img class="mb-4" src="${pageContext.request.contextPath}/static/img/efrei.svg" alt="" width="144" height="90">
 
-        <h1 class="h3 mb-3 font-weight-normal"></h1>
-        <h6 class="h6 mb-3 font-weight-normal" style="color: #ff0000"></h6>
+        <h1 class="h3 mb-3 font-weight-normal">Welcome !</h1>
+        <h6 class="h6 mb-3 font-weight-normal" style="color: #ff0000">${requestScope.msg}</h6>
         <label class="sr-only"></label>
-        <input type="text" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+        <input type="text" name="username" class="form-control" placeholder="Username" required="" autofocus=""/>
         <label class="sr-only">Password</label>
-        <input type="password" name="password" class="form-control" placeholder="Password" required="">
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <input type="password" name="password" class="form-control" placeholder="Password" required=""/>
+        <button class="btn btn-lg btn-primary btn-block mt-2" type="submit">Sign in</button>
         <p class="mt-5 mb-3 text-muted">© 2019-2020</p>
 
     </form>

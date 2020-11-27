@@ -21,8 +21,9 @@ import javax.servlet.http.HttpSession;
 public class TutorController {
     @Autowired
     TutorService tutorService;
+
     @GetMapping("/login")
-    public String toLogin(){
+    public String toLogin() {
         return "login";
     }
 
@@ -31,16 +32,16 @@ public class TutorController {
         username = username.trim();
         password = password.trim();
         Tutor tutor = tutorService.login(username, password);
-        if (tutor == null){
+        if (tutor == null) {
             model.addAttribute("msg", "Username or password incorrect");
-            return "redirect:login";
+            return "login";
         }
-
         session.setAttribute("tutor", tutor);
         return "redirect:students";
     }
+
     @GetMapping("/logout")
-    public String logout( HttpSession session){
+    public String logout(HttpSession session) {
         session.setAttribute("tutor", null);
         return "redirect:login";
     }

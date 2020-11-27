@@ -45,8 +45,9 @@ public class TutoJDBCDaoImpl implements TutorDao {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
-            Tutor tutor = new Tutor();
+            Tutor tutor = null;
             while (resultSet.next()) {
+                tutor = new Tutor();
                 tutor.setTId(resultSet.getInt("t_id"));
                 tutor.setTName(resultSet.getString("t_name"));
                 tutor.setUsername(resultSet.getString("username"));
