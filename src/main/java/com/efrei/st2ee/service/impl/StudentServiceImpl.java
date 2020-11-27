@@ -27,8 +27,8 @@ import javax.annotation.Resource;
 @Service("studentService")
 public class StudentServiceImpl implements StudentService {
 
-    //@Resource(name="studentDao")
-    @Resource(name = "jdbcStudentDao")
+    @Resource(name="studentDao")
+    //@Resource(name = "jdbcStudentDao")
     private StudentDao studentDao;
 
 

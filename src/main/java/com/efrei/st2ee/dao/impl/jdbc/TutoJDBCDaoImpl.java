@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author louis
  */
-@Repository("jdbcTutorDao")
+//@Repository("jdbcTutorDao")
 public class TutoJDBCDaoImpl implements TutorDao {
 
     private String dbUrl;

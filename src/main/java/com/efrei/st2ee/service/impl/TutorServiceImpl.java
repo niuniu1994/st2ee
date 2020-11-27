@@ -18,8 +18,8 @@ import org.springframework.stereotype.Service;
 @Service("tutorService")
 public class TutorServiceImpl implements TutorService {
 
-    //@Resource(name = "tutorDao")
-    @Resource(name = "jdbcTutorDao")
+    @Resource(name = "tutorDao")
+    //@Resource(name = "jdbcTutorDao")
     TutorDao tutorDao;
 
     @Override

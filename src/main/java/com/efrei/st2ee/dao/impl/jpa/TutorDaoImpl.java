@@ -20,7 +20,7 @@ import java.util.List;
  *
  */
 
-//@Repository("tutorDao")
+@Repository("tutorDao")
 public class TutorDaoImpl implements TutorDao {
 
     @Autowired

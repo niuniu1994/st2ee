@@ -31,7 +31,7 @@ import org.springframework.stereotype.Repository;
 /**
  * @author louis
  */
-@Repository("jdbcStudentDao")
+//@Repository("jdbcStudentDao")
 public class StudentJDBCDaoImpl implements StudentDao {
 
     private String dbUrl;
