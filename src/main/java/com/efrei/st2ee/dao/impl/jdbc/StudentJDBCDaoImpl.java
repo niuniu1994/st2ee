@@ -94,8 +94,16 @@ public class StudentJDBCDaoImpl implements StudentDao {
             preparedStatement.setString(5, student.getCompanyName());
             preparedStatement.setString(6, student.getCharger());
             preparedStatement.setString(7, student.getAddress());
-            preparedStatement.setInt(8, student.getNoteTech());
-            preparedStatement.setInt(9, student.getNoteCom());
+            if (student.getNoteTech() != null) {
+                preparedStatement.setInt(8, student.getNoteTech());
+            } else {
+                preparedStatement.setNull(8, 0);
+            }
+            if (student.getNoteCom() != null) {
+                preparedStatement.setInt(9, student.getNoteCom());
+            } else {
+                preparedStatement.setNull(9, 0);
+            }
             preparedStatement.setString(10, student.getDescription());
             preparedStatement.setString(11, student.getComment());
             preparedStatement.setString(12, student.getStudentGroup());
@@ -189,8 +197,16 @@ public class StudentJDBCDaoImpl implements StudentDao {
                 student.setCompanyName(resultSet.getString("company_name"));
                 student.setCharger(resultSet.getString("charger"));
                 student.setAddress(resultSet.getString("address"));
-                student.setNoteTech(resultSet.getInt("note_tech"));
-                student.setNoteCom(resultSet.getInt("note_com"));
+                if (resultSet.getObject("note_tech") != null) {
+                    student.setNoteTech(resultSet.getInt("note_tech"));
+                } else {
+                    student.setNoteTech(null);
+                }
+                if (resultSet.getObject("note_com") != null) {
+                    student.setNoteCom(resultSet.getInt("note_com"));
+                } else {
+                    student.setNoteCom(null);
+                }
                 student.setDescription(resultSet.getString("description"));
                 student.setComment(resultSet.getString("comment"));
                 student.setStartDate(resultSet.getDate("start_date").toLocalDate());
@@ -303,7 +319,6 @@ public class StudentJDBCDaoImpl implements StudentDao {
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, sId);
             preparedStatement.setInt(2, tId);
-            preparedStatement.executeUpdate();
             return preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

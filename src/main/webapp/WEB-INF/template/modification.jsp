@@ -131,8 +131,8 @@
                                                 <label style="font-weight:bold;">Note Com</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                <input id="noteCom" name="noteCom" class="form-control" type="number"
-                                                       max="20" min="0" value="${student.noteCom}">
+                                                <input id="noteCom" name="noteCom" class="form-control" type="text"
+                                                       value="${student.noteCom}">
                                             </div>
                                         </div>
                                         <hr/>
@@ -141,8 +141,8 @@
                                                 <label style="font-weight:bold;">Note Tech</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                <input id="noteTech" name="noteTech" class="form-control" type="number"
-                                                       max="20" min="0" value="${student.noteTech}">
+                                                <input id="noteTech" name="noteTech" class="form-control" type="text"
+                                                       value="${student.noteTech}">
                                             </div>
                                         </div>
                                         <hr/>
