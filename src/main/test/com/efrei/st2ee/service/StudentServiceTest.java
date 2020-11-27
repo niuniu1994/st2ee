@@ -12,8 +12,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @program: ST2EE
@@ -31,18 +33,26 @@ public class StudentServiceTest {
     StudentDao studentDao;
 
     @Test
-    public void updateStudentTest(){
-        Student student1 = studentDao.selectStudent(19,1);
-
-        student1.setStudentGroup("M2");
-        student1.setFirstName("LI");
-        student1.setLastName("HONG");
-
-        studentService.modifyStudent(student1);
+    @Transactional
+    public void updateStudentTest() {
+        Student student = studentDao.selectStudent(1, 1);
+        String baseGroup = student.getStudentGroup();
+        String baseFirstName = student.getFirstName();
+        String baseLastName = student.getLastName();
+        student.setStudentGroup("M2");
+        student.setFirstName("LENON");
+        student.setLastName("HONG");
+        studentService.modifyStudent(student);
+        Student studentCreated = studentDao.selectStudent(1, 1);
+        student.setStudentGroup(baseGroup);
+        student.setFirstName(baseFirstName);
+        student.setLastName(baseLastName);
+        studentService.modifyStudent(student);
+        Assert.assertEquals(student.getFirstName(), studentCreated.getFirstName());
     }
 
     @Test
-    public void addStudentTest(){
+    public void addStudentTest() {
         Tutor tutor = new Tutor();
         tutor.setTId(1);
         Student student = new Student();
@@ -55,8 +65,9 @@ public class StudentServiceTest {
         student.setTutor(tutor);
         student.setEndDate(LocalDate.now());
         student.setStartDate(LocalDate.now());
-
         StudentExecution studentExecution = studentService.addStudent(student);
-        Assert.assertEquals(StudentStateEnum.ADDSUCCESS.getState() ,studentExecution.getState());
+        Assert.assertEquals(StudentStateEnum.ADDSUCCESS.getState(), studentExecution.getState());
+        List<Student> listStudent = studentDao.selectAllStudents(1);
+        studentDao.deleteStudent(listStudent.get(listStudent.size() - 1).getStudentId(), 1);
     }
 }

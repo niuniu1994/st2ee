@@ -28,6 +28,5 @@ public class TutorDaoTest {
         String password = "0000";
         Tutor tutor = tutorDao.selectTutor(username,password);
         Assert.assertNotNull(tutor);
-
     }
 }
