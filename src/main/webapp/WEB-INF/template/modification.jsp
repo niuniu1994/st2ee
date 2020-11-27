@@ -132,8 +132,7 @@
                                             </div>
                                             <div class="col-md-8 col-6">
                                                 <input id="noteCom" name="noteCom" class="form-control" type="number"
-                                                       max="20" min="0"
-                                                       required="" value="${student.noteCom}">
+                                                       max="20" min="0" value="${student.noteCom}">
                                             </div>
                                         </div>
                                         <hr/>
@@ -143,8 +142,7 @@
                                             </div>
                                             <div class="col-md-8 col-6">
                                                 <input id="noteTech" name="noteTech" class="form-control" type="number"
-                                                       max="20" min="0"
-                                                       required="" value="${student.noteTech}">
+                                                       max="20" min="0" value="${student.noteTech}">
                                             </div>
                                         </div>
                                         <hr/>
@@ -269,7 +267,7 @@
     function getContextPath() {
         let contextPath = document.location.pathname;
         let index = contextPath.substr(1).indexOf("/");
-        contextPath = contextPath.substr(0,index+1);
+        contextPath = contextPath.substr(0, index + 1);
         return contextPath;
     }
 
@@ -277,7 +275,7 @@
         function () {
             let contextPath = getContextPath();
             let path = "/student";
-            if (!contextPath === "/student"){
+            if (!contextPath === "/student") {
                 path = contextPath + path;
             }
             console.log(path);
@@ -303,9 +301,9 @@
                 if (student.firstName === '' || student.lastName === '' || student.address === '' || student.companyName === ''
                     || student.charger === '' || student.startDate === '' || student.endDate === '' || student.studentGroup === '') {
                     $("#alert1").attr('style', 'display:block');
-                } else if( (student.noteTech !== '' && isNaN(student.noteTech)) || (student.noteCom !== '' && isNaN(student.noteComh))){
-                    $('#alert2').attr('style','display:block');
-                }else {
+                } else if ((student.noteTech !== '' && isNaN(student.noteTech)) || (student.noteCom !== '' && isNaN(student.noteCom))) {
+                    $('#alert2').attr('style', 'display:block');
+                } else {
                     let res = JSON.stringify(student);
                     $.ajax({
                         url: path,
@@ -316,7 +314,7 @@
                         type: method,
                         success: function (data) {
                             if (data.msg === 'success') {
-                                window.location.href = path+'s';
+                                window.location.href = path + 's';
                             } else {
                                 $('#alert').attr('style', 'display:block');
                             }

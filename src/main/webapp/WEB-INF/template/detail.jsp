@@ -18,7 +18,7 @@
             margin-bottom: 10px;
         }
 
-        li{
+        li {
             margin-top: 4px;
             margin-bottom: 4px;
         }
@@ -42,14 +42,18 @@
                     <div class="card-title mb-4">
                         <div class="d-flex justify-content-start">
                             <div class="image-container">
-                                <img src="${pageContext.request.contextPath}/static/img/head.png" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail"  alt=""/>
+                                <img src="${pageContext.request.contextPath}/static/img/head.png" id="imgProfile"
+                                     style="width: 150px; height: 150px" class="img-thumbnail" alt=""/>
                             </div>
                             <div class="userData ml-3">
-                                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">${student.firstName}&nbsp;${student.lastName}</a></h2>
+                                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a
+                                        href="javascript:void(0);">${student.firstName}&nbsp;${student.lastName}</a>
+                                </h2>
 
                             </div>
                             <div class="ml-auto">
-                                <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
+                                <input type="button" class="btn btn-primary d-none" id="btnDiscard"
+                                       value="Discard Changes"/>
                             </div>
                         </div>
                     </div>
@@ -58,14 +62,17 @@
                         <div class="col-12">
                             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" >Basic Info</a>
+                                    <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo"
+                                       role="tab">Basic Info</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab">Company Info</a>
+                                    <a class="nav-link" id="connectedServices-tab" data-toggle="tab"
+                                       href="#connectedServices" role="tab">Company Info</a>
                                 </li>
                             </ul>
                             <div class="tab-content ml-1" id="myTabContent">
-                                <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                <div class="tab-pane fade show active" id="basicInfo" role="tabpanel"
+                                     aria-labelledby="basicInfo-tab">
 
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
@@ -75,17 +82,17 @@
                                             ${student.studentId}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
 
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
                                             <label style="font-weight:bold;">First Name</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                           ${student.firstName}
+                                            ${student.firstName}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
 
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
@@ -95,7 +102,7 @@
                                             ${student.lastName}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
 
 
                                     <div class="row">
@@ -106,7 +113,7 @@
                                             ${student.studentGroup}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
                                             <label style="font-weight:bold;">Note Com</label>
@@ -115,7 +122,7 @@
                                             ${student.noteCom}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
                                             <label style="font-weight:bold;">Note Tech</label>
@@ -124,16 +131,16 @@
                                             ${student.noteTech}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
                                             <label style="font-weight:bold;">Description of Mission</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                           ${student.description}
+                                            ${student.description}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
                                             <label style="font-weight:bold;">Comments</label>
@@ -142,10 +149,11 @@
                                             ${student.comment}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
 
                                 </div>
-                                <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+                                <div class="tab-pane fade" id="connectedServices" role="tabpanel"
+                                     aria-labelledby="ConnectedServices-tab">
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
                                             <label style="font-weight:bold;">Name</label>
@@ -154,7 +162,7 @@
                                             ${student.companyName}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
 
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
@@ -164,7 +172,7 @@
                                             ${student.address}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
 
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
@@ -174,17 +182,17 @@
                                             ${student.charger}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
 
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
                                             <label style="font-weight:bold;">Start Date</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                           ${student.startDate}
+                                            ${student.startDate}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
 
                                     <div class="row">
                                         <div class="col-sm-3 col-md-2 col-5">
@@ -194,10 +202,12 @@
                                             ${student.endDate}
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
                                 </div>
                                 <div>
-                                    <button class="btn btn-success" onclick="javascript :history.back(-1);" type="button">Go back</button>
+                                    <button class="btn btn-success" onclick="javascript :history.back(-1);"
+                                            type="button">Go back
+                                    </button>
                                 </div>
                             </div>
                         </div>

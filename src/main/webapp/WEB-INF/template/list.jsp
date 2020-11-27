@@ -44,6 +44,12 @@
                     <input id="keyWord" class="form-control mr-sm-2 b-1" type="search" placeholder="Search"
                            aria-label="Search" value="">
                     <button id="btnSearch" class=" btn btn-sm btn-success " type="submit">Search</button>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label><br>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label><br>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
                 </form>
             </div>
         </div>
